@@ -59,5 +59,22 @@ let store ={
 };
 
 
+export const sendMessageActionCreator = ()=>{
+    return {
+        type: 'SEND_MESSAGE'
+    }
+};
+
+
+export const addNewTextMessageActionCreator =(message)=>{
+    return {
+        type: 'ADD_NEW_TEXT_MESSAGE',
+        newMassage: message
+
+    }
+};
+
+
+
 export default store;
 window.store = store;

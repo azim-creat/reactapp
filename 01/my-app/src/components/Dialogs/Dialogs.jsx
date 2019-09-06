@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
+import {sendMessageActionCreator , addNewTextMessageActionCreator} from './../../redux/state'
 
 
 const Dialogs = (props) => {
@@ -26,12 +27,13 @@ const Dialogs = (props) => {
 
 
     let sendMessage = () => {
-        props.dispatch({type: 'SEND_MESSAGE'});
+        props.dispatch(sendMessageActionCreator());
     }
 
     let textAreaOnchange = () =>{
         let message = newText.current.value;
-        props.dispatch({ type:'ADD_NEW_TEXT_MESSAGE', newMassage: message});
+        let action = addNewTextMessageActionCreator(message);
+        props.dispatch(action);
 
     };
 
@@ -55,7 +57,7 @@ const Dialogs = (props) => {
 
             <textarea   ref={newText} 
                         className = {styles.Dialogs_textare_istext}
-                        value={props.newMessageText} 
+                        value={props.dispatch.getStore} //тут надо правильный путь указать
                         onChange={textAreaOnchange}
                                     />
             
