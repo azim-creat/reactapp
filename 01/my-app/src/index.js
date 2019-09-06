@@ -1,11 +1,8 @@
 import * as serviceWorker from './serviceWorker';
-import {state , subscribe} from './redux/state'
+import store from './redux/state'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import {sendMessage} from './redux/state'
-import {addNewTextMessage} from './redux/state'
 import {BrowserRouter} from 'react-router-dom';
 
 
@@ -15,9 +12,9 @@ import {BrowserRouter} from 'react-router-dom';
 
     ReactDOM.render(
         <BrowserRouter>
-            <App  state              = {state} 
-                  sendMessage        = {sendMessage}
-                  addNewTextMessage  = {addNewTextMessage}
+            <App  state              = {store.getState()} 
+                  sendMessage        = {store.sendMessage.bind(store)}
+                  addNewTextMessage  = {store.addNewTextMessage.bind(store)}
                   />
         </BrowserRouter>
     , document.getElementById('root'));
@@ -26,6 +23,6 @@ import {BrowserRouter} from 'react-router-dom';
 
 
 
-rerenderTree(state);
-subscribe(rerenderTree);
+rerenderTree(store.getState());
+store.subscribe(rerenderTree);
 serviceWorker.unregister();
