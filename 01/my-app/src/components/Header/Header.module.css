@@ -1,0 +1,17 @@
+.header{
+    background-color: blueviolet;
+    grid-area: head;
+}
+
+.header__left_part_icon{
+    float: left;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.header__right_part_icon{
+    float: right;
+    margin: 10px;
+    cursor: pointer;
+}
+

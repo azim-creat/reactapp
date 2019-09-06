@@ -1,0 +1,22 @@
+.sidebar{
+    background-color: brown;
+    grid-area: sidebar;
+}
+
+.Sidebar_icon{
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+  }
+
+.activeLink{
+    color: darkslategrey;
+    background-color: coral;
+    background-size: cover;
+    
+}

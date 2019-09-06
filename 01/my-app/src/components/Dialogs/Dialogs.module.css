@@ -1,0 +1,52 @@
+.Dialogs{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    grid-template-rows: 70vh 30vh;
+    grid-template-areas:    "iscontact isdialog"
+                            "iscontact textarea";
+    grid-gap: 10px;
+
+}
+
+
+.Dialogs_one_contact{
+    padding: 10px;
+    display: block;
+}
+
+
+.Dialogs_its_dialog{
+    background-color: indianred;
+    grid-area: isdialog;
+    padding: 10px;  
+}
+
+.Dialogs_message_item{
+    padding: 15px;
+    margin: 10px;
+    background-color: bisque;
+    border-radius: 10px;
+}
+
+.Dialogs_contacts{
+    background-color: darkorange;
+    grid-area: iscontact
+}
+
+.Dialogs_textarea{
+    grid-area: textarea;
+    height: auto;
+  
+}
+
+.Dialogs_textare_istext{
+    width: 70%;
+    height: 50px;
+}
+
+.activeLink{
+    color: darkslategrey;
+    background-color: coral;
+    background-size: cover;
+    
+}

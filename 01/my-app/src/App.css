@@ -1,0 +1,29 @@
+
+
+.main__grid{
+  display: grid;
+                      
+  grid-template-columns: 20% 80% ;
+  grid-template-rows: 60px auto;
+
+  grid-template-areas: 
+                      's h'
+                      's m';
+}
+.header{
+  background-color: blueviolet;
+
+  grid-area: h;
+}
+
+.app_main_content{
+  background-color: rgb(226, 214, 43);
+ grid-area: m;
+}
+
+.sidebar{
+  background-color: brown;
+  grid-area: s;
+}
+
+
