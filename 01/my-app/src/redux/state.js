@@ -30,34 +30,32 @@ let store ={
         return this._state;
     },
 
+    subscribe (observer){
+        this._callSubscriber=observer
+    },
+
     _callSubscriber (){
     
     },
 
-    sendMessage (){
+    dispatch(action) {
+        if(action.type === 'SEND_MESSAGE'){
+            let newMessage ={
+                id:6,
+                message: this._state.newMessageText
+            };
+        
+            this._state.messages.push(newMessage);
+            this._state.newMessageText = '';
+            this._callSubscriber(this._state);
 
-        let newMessage ={
-            id:6,
-            message: this._state.newMessageText
-        };
-    
-        this._state.messages.push(newMessage);
-        this._state.newMessageText = '';
-        this._callSubscriber(this._state);
-    },
-
-    addNewTextMessage  (newMassage){
-
-    
-
-        this._state.newMessageText= newMassage;
-    
-        this._callSubscriber(this._state);
-    },
-
-    subscribe (observer){
-        this._callSubscriber=observer
+        } else if ( action.type === 'ADD_NEW_TEXT_MESSAGE' ) {
+            this._state.newMessageText= action.newMassage;
+            this._callSubscriber(this._state);
+        }
     }
+
+    
 };
 
 

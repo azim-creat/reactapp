@@ -23,11 +23,10 @@ function App(props) {
                     < Route path='/main' component={Main} />
                     < Route path='/professors' component={Professors} />
                     < Route path='/dialogs' render={ () => (
-                                                            <Dialogs contacts            = {props.state.contacts}  
-                                                                     messages            = {props.state.messages} 
-                                                                     sendMessage         = {props.sendMessage}
-                                                                     newMessageText      = {props.state.newMessageText}
-                                                                     addNewTextMessage   = {props.addNewTextMessage}
+                                                            <Dialogs contacts    = {props.state.contacts}  
+                                                                     messages    = {props.state.messages} 
+                                                                     sendMessage = {props.sendMessage}
+                                                                     dispatch    = {props.dispatch}
                                                                     />)
                                                     } 
                                                                     

@@ -22,16 +22,23 @@ const Dialogs = (props) => {
     
     let newText= React.createRef();
 
+
+
+
     let sendMessage = () => {
-        props.sendMessage();
-        props.addNewTextMessage('');
+        props.dispatch({type: 'SEND_MESSAGE'});
     }
 
     let textAreaOnchange = () =>{
         let message = newText.current.value;
-        props.addNewTextMessage(message);
+        props.dispatch({ type:'ADD_NEW_TEXT_MESSAGE', newMassage: message});
 
     };
+
+
+
+
+
     
     return (
     <div className={styles.Dialogs}>
