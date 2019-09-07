@@ -2,9 +2,10 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom'; 
 import {sendMessageActionCreator , addNewTextMessageActionCreator} from './../../redux/state' 
+
+
+
 const Dialogs = (props) => {
-
-
 
     let contactElements = props.contacts.map(c =>
         <NavLink
