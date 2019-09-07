@@ -1,3 +1,5 @@
+const SEND_MESSAGE ='SEND_MESSAGE';
+const ADD_NEW_TEXT_MESSAGE ='ADD_NEW_TEXT_MESSAGE';
 
 let store ={
 
@@ -39,7 +41,7 @@ let store ={
     },
 
     dispatch(action) {
-        if(action.type === 'SEND_MESSAGE'){
+        if(action.type === SEND_MESSAGE){
             let newMessage ={
                 id:6,
                 message: this.getState().newMessageText
@@ -49,7 +51,7 @@ let store ={
             this.getState().newMessageText = '';
             this._callSubscriber(this.getState());
 
-        } else if ( action.type === 'ADD_NEW_TEXT_MESSAGE' ) {
+        } else if ( action.type === ADD_NEW_TEXT_MESSAGE ) {
             this.getState().newMessageText= action.newMassage;
             this._callSubscriber(this.getState());
         }
@@ -61,14 +63,14 @@ let store ={
 /*Экспорт в Dialog для того чтобы  */
 export const sendMessageActionCreator = ()=>{
     return {
-        type: 'SEND_MESSAGE'
+        type: SEND_MESSAGE
     }
 };
 
 
 export const addNewTextMessageActionCreator =(message)=>{
     return {
-        type: 'ADD_NEW_TEXT_MESSAGE',
+        type: ADD_NEW_TEXT_MESSAGE,
         newMassage: message
 
     }
