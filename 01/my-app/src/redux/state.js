@@ -42,23 +42,23 @@ let store ={
         if(action.type === 'SEND_MESSAGE'){
             let newMessage ={
                 id:6,
-                message: this._state.newMessageText
+                message: this.getState().newMessageText
             };
         
-            this._state.messages.push(newMessage);
-            this._state.newMessageText = '';
-            this._callSubscriber(this._state);
+            this.getState().messages.push(newMessage);
+            this.getState().newMessageText = '';
+            this._callSubscriber(this.getState());
 
         } else if ( action.type === 'ADD_NEW_TEXT_MESSAGE' ) {
-            this._state.newMessageText= action.newMassage;
-            this._callSubscriber(this._state);
+            this.getState().newMessageText= action.newMassage;
+            this._callSubscriber(this.getState());
         }
     }
 
     
 };
 
-
+/*Экспорт в Dialog для того чтобы  */
 export const sendMessageActionCreator = ()=>{
     return {
         type: 'SEND_MESSAGE'

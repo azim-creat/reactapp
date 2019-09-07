@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'; 
 import styles from './Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
-import {sendMessageActionCreator , addNewTextMessageActionCreator} from './../../redux/state'
-
-
+import { NavLink } from 'react-router-dom'; 
+import {sendMessageActionCreator , addNewTextMessageActionCreator} from './../../redux/state' 
 const Dialogs = (props) => {
+
+
 
     let contactElements = props.contacts.map(c =>
         <NavLink
@@ -17,15 +17,16 @@ const Dialogs = (props) => {
         </NavLink>
     );
     
+
+    
     let messageElements = props.messages.map( m => 
         <div className={styles.Dialogs_message_item}>{m.message}</div> 
     );
+
     
     let newText= React.createRef();
 
-
-
-
+    
     let sendMessage = () => {
         props.dispatch(sendMessageActionCreator());
     }
@@ -38,7 +39,7 @@ const Dialogs = (props) => {
     };
 
 
-
+    let currentTextMessageFromState = props.newMessageText;
 
 
     
@@ -49,7 +50,7 @@ const Dialogs = (props) => {
             {contactElements}
         </div>
 
-        <div className={styles.Dialogs_its_dialog} addNewTextMessage={props.addNewTextMessage}>
+        <div className={styles.Dialogs_its_dialog}>
             {messageElements}
         </div>
 
@@ -57,7 +58,7 @@ const Dialogs = (props) => {
 
             <textarea   ref={newText} 
                         className = {styles.Dialogs_textare_istext}
-                        value={props.dispatch.getStore} //тут надо правильный путь указать
+                        value={currentTextMessageFromState} //тут надо правильный путь указать
                         onChange={textAreaOnchange}
                                     />
             
@@ -72,4 +73,6 @@ const Dialogs = (props) => {
     );
 }
 
-export default Dialogs;
+
+
+export default Dialogs; 

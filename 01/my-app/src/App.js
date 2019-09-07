@@ -24,7 +24,8 @@ function App(props) {
                     < Route path='/professors' component={Professors} />
                     < Route path='/dialogs' render={ () => (
                                                             <Dialogs contacts          = {props.state.contacts}  
-                                                                     messages          = {props.state.messages} 
+                                                                     messages          = {props.state.messages}
+                                                                     newMessageText    = {props.state.newMessageText}
                                                                      sendMessage       = {props.sendMessage}
                                                                      dispatch          = {props.dispatch}
                                                                     />)
