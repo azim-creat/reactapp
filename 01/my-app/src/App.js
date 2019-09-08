@@ -6,7 +6,7 @@ import Main from './components/Main/Main.jsx';
 import Professors from './components/Professors/Professors.jsx';
 import {Route} from 'react-router-dom';
 import Dialogs from './components/Dialogs/Dialogs';
-import Reports from './components/Reports/Reports';
+import Posts from './components/Posts/Posts';
 
 function App(props) {
     return (
@@ -16,13 +16,13 @@ function App(props) {
                 <Header />
                 <Sidebar />
 
-                <div className='app_main_content'>
+            <div className='app_main_content'>
                     < Route path='/main' component={Main} />
                     < Route path='/professors' component={Professors} />
                     < Route path='/dialogs' render={ () => (
-                                                            <Dialogs contacts      ={props.state.contacts}  
-                                                                     messages      ={props.state.messages}
-                                                                     newMessageText={props.state.newMessageText}
+                                                            <Dialogs contacts      ={props.state.dialogModul.contacts}  
+                                                                     messages      ={props.state.dialogModul.messages}
+                                                                     newMessageText={props.state.dialogModul.newMessageText}
                                                                      sendMessage   ={props.sendMessage}
                                                                      dispatch      ={props.dispatch}
                                                             />)
@@ -30,10 +30,7 @@ function App(props) {
                                                                     
                     />
 
-                    <Route path='/reports' render={ <Reports />
-
-                                                  }       
-                    />
+                    <Route path='/posts' render={ () => <Posts />} />
                 </div>
 
 

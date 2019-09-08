@@ -4,27 +4,33 @@ const ADD_NEW_TEXT_MESSAGE ='ADD_NEW_TEXT_MESSAGE';
 let store ={
 
     _state : {
-        contacts : [
-            { id: 1, fullName: 'Sasha Petrovv' },
-            { id: 2, fullName: 'Iosiv Stalin' },
-            { id: 3, fullName: 'Engels Chyn' },
-            { id: 4, fullName: 'Adolf Enshtein' },
-            { id: 5, fullName: 'Mark Czykerberg' },
-            { id: 6, fullName: 'Stiv Jobs' },
-            { id: 7, fullName: 'Masha Rasputina' },
-            { id: 8, fullName: 'Vladimir Pytin' }
-        ],
+        dialogModul :{
+            contacts : [
+                { id: 1, fullName: 'Sasha Petrovv' },
+                { id: 2, fullName: 'Iosiv Stalin' },
+                { id: 3, fullName: 'Engels Chyn' },
+                { id: 4, fullName: 'Adolf Enshtein' },
+                { id: 5, fullName: 'Mark Czykerberg' },
+                { id: 6, fullName: 'Stiv Jobs' },
+                { id: 7, fullName: 'Masha Rasputina' },
+                { id: 8, fullName: 'Vladimir Pytin' }
+            ],
+            
+            messages : [
+                { id: 1, message: 'Hi' },
+                { id: 2, message: 'Whats Up?' },
+                { id: 3, message: 'Fine, What about you?' },
+                { id: 4, message: 'Not bad' },
+                { id: 5, message: 'Great' },
+                { id: 6, message: 'By' },
+            ],
         
-        messages : [
-            { id: 1, message: 'Hi' },
-            { id: 2, message: 'Whats Up?' },
-            { id: 3, message: 'Fine, What about you?' },
-            { id: 4, message: 'Not bad' },
-            { id: 5, message: 'Great' },
-            { id: 6, message: 'By' },
-        ],
+            newMessageText :'Write down new message' 
     
-        newMessageText :'Write down new message' 
+        },
+       
+
+
     
     },
 
@@ -44,15 +50,15 @@ let store ={
         if(action.type === SEND_MESSAGE){
             let newMessage ={
                 id:6,
-                message: this.getState().newMessageText
+                message: this.getState().dialogModul.newMessageText
             };
         
-            this.getState().messages.push(newMessage);
-            this.getState().newMessageText = '';
+            this.getState().dialogModul.messages.push(newMessage);
+            this.getState().dialogModul.newMessageText = '';
             this._callSubscriber(this.getState());
 
         } else if ( action.type === ADD_NEW_TEXT_MESSAGE ) {
-            this.getState().newMessageText= action.newMassage;
+            this.getState().dialogModul.newMessageText= action.newMassage;
             this._callSubscriber(this.getState());
         }
     }

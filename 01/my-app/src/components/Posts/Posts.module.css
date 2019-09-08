@@ -1,0 +1,41 @@
+.Reports{
+    display: flex;
+}
+
+.Posts_items{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.Posts_items_item{
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px;
+    background-color: azure;
+    border-radius: 5px;
+
+}
+
+.Posts_item_title{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.Posts_adding{
+    height: auto;
+    background-color: burlywood;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+textarea{
+    width: 80%;
+    height: auto;
+}
+button{
+    width: 15%;
+    margin:auto;
+
+}
