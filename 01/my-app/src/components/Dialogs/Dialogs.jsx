@@ -40,7 +40,7 @@ const Dialogs = (props) => {
     };
 
 
-    let currentTextMessageFromState = props.newMessageText;
+    
 
     
     return (
@@ -59,7 +59,7 @@ const Dialogs = (props) => {
 
             <textarea   ref={newText} 
                         className = {styles.Dialogs_textare_istext}
-                        value={currentTextMessageFromState} //тут надо правильный путь указать
+                        value={props.newMessageText}
                         onChange={textAreaOnchange}
                                     />
             

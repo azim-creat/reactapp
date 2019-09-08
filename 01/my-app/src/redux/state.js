@@ -56,7 +56,7 @@ let store ={
             this._callSubscriber(this.getState());
 
         } else if ( action.type === 'ADD_NEW_TEXT_MESSAGE' ) {
-            this.getState().newMessageText= action.newMassage;
+            this.getState().dialogModul.newMessageText= action.newMassage;
             this._callSubscriber(this.getState());
         }
     }
