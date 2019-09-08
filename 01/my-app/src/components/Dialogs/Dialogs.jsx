@@ -42,9 +42,9 @@ const Dialogs = (props) => {
 
     let currentTextMessageFromState = props.newMessageText;
 
-
     
     return (
+       
     <div className={styles.Dialogs}>
 
         <div className={styles.Dialogs_contacts}>

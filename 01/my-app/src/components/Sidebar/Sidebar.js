@@ -11,7 +11,7 @@ const  Sidebar = () => {
             <NavLink to='/students'     className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Students           </NavLink>
             <NavLink to='/staffs'       className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Staffs             </NavLink>
             <NavLink to='/reports'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Reports            </NavLink>
-            <NavLink to='/posts'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Posts                </NavLink>
+            <NavLink to='/posts'        className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Posts                </NavLink>
             <NavLink to='/university'   className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>University Centres </NavLink>
             <NavLink to='/courses'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Courses            </NavLink>
             <NavLink to='/library'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Library            </NavLink>
