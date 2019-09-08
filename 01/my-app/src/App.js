@@ -31,6 +31,9 @@ function App(props) {
                     />
 
                     <Route path='/posts' render={ () => <Posts   postItems = {props.state.postsModul.postItems}
+                                                                 dispatch      ={props.dispatch}
+                                                                 currentTitleText = {props.state.postsModul.title}
+                                                                 currentPostText = {props.state.postsModul.textPost}
                                                     
                                                         />
                                                 } 
