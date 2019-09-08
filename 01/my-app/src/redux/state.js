@@ -36,7 +36,8 @@ let store ={
                 {id:3 , title: 'Title 3' , postText: 'Lorem upsumLorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, rem reprehenderit explicabo cupiditate molestiae, porro exercitationem eveniet adipisci veniam dolorem praesentium dignissimos quibusdam voluptatem a necessitatibus minus vitae dicta facilis?'}
             ],
 
-            newPostItem : {id: '' , title: '' , postText: ''}
+            title: '',
+            textPost: ''
         }
        
 
@@ -70,6 +71,24 @@ let store ={
         } else if ( action.type === 'ADD_NEW_TEXT_MESSAGE' ) {
             this.getState().dialogModul.newMessageText= action.newMassage;
             this._callSubscriber(this.getState());
+        }else if ( action.type === 'ADD_NEW_TITLE_TEXT' ) {
+            this.getState().postsModul.title = action.newTitleText;
+            this._callSubscriber(this.getState());
+        }else if ( action.type === 'ADD_NEW_POST_TEXT' ) {
+            this.getState().postsModul.textPost = action.newPostText;
+            this._callSubscriber(this.getState());
+        }else if(action.type === 'POST_POST'){
+            let newPost = {
+                id:4,
+                title: this.getState().postsModul.title,
+                postText: this.getState().postsModul.textPost
+            };
+        
+            this.getState().postsModul.postItems.push(newPost);
+            this.getState().postsModul.title = '';
+            this.getState().postsModul.textPost = '';
+            this._callSubscriber(this.getState());
+
         }
     }
 
@@ -89,6 +108,25 @@ export const addNewTextMessageActionCreator =(message)=>{
         type: 'ADD_NEW_TEXT_MESSAGE',
         newMassage: message
 
+    }
+};
+
+export const postPostActionCreator =() =>{
+    return {
+        type: 'POST_POST'
+    }
+};
+
+export const addNewTitleTextActionCreator =(onchangeTitleText)=>{
+    return {
+        type: 'ADD_NEW_TITLE_TEXT',
+        newTitleText: onchangeTitleText
+    }
+};
+export const addNewPostTextActionCreator =(onchangePostText)=>{
+    return {
+        type: 'ADD_NEW_POST_TEXT',
+        newPostText: onchangePostText
     }
 };
 
