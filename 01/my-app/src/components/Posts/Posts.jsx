@@ -4,39 +4,22 @@ import styles from './Posts.module.css';
 
 
 const  Posts = (props) =>{
-    
+    let mapedPostsfromState = props.postItems.map (p =>
+        <div className={styles.Posts_items_item}>
+            <div className={styles.Posts_item_title}>{p.title}</div>
+
+            <div>{p.postText} </div>
+
+        </div>
+
+
+        );
 
 
     return (
             <div className={styles.Posts}>
-                <div className={styles.Posts_items}>
-
-                    <div className={styles.Posts_items_item}>
-                        <div className={styles.Posts_item_title}>Title</div>
-
-                        <div>bodu Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, rem reprehenderit explicabo cupiditate molestiae, porro exercitationem eveniet adipisci veniam dolorem praesentium dignissimos quibusdam voluptatem a necessitatibus minus vitae dicta facilis?</div>
-
-                    </div>
-
-                    <div className={styles.Posts_items_item}>
-                        <div className={styles.Posts_item_title}>Title</div>
-
-                        <div>bodu Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, rem reprehenderit explicabo cupiditate molestiae, porro exercitationem eveniet adipisci veniam dolorem praesentium dignissimos quibusdam voluptatem a necessitatibus minus vitae dicta facilis?</div>
-
-                    </div>
-
-                    <div className={styles.Posts_items_item}>
-                        <div className={styles.Posts_item_title}>Title</div>
-
-                        <div>bodu Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, rem reprehenderit explicabo cupiditate molestiae, porro exercitationem eveniet adipisci veniam dolorem praesentium dignissimos quibusdam voluptatem a necessitatibus minus vitae dicta facilis?</div>
-
-                    </div>
-                    <div className={styles.Posts_items_item}>
-                        <div className={styles.Posts_item_title}>Title</div>
-
-                        <div>bodu Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, rem reprehenderit explicabo cupiditate molestiae, porro exercitationem eveniet adipisci veniam dolorem praesentium dignissimos quibusdam voluptatem a necessitatibus minus vitae dicta facilis?</div>
-
-                    </div>
+                <div className={styles.Posts_items}>                  
+                    {mapedPostsfromState}
                 </div>
 
                 <div className={styles.Posts_adding}>

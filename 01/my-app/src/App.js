@@ -30,7 +30,11 @@ function App(props) {
                                                                     
                     />
 
-                    <Route path='/posts' render={ () => <Posts />} />
+                    <Route path='/posts' render={ () => <Posts   postItems = {props.state.postsModul.postItems}
+                                                    
+                                                        />
+                                                } 
+                    />
                 </div>
 
 
