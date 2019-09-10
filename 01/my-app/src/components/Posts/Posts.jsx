@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Posts.module.css';
-import {addNewTitleTextActionCreator,  postPostActionCreator , addNewPostTextActionCreator} from './../../redux/state' 
+import {addNewTitleTextActionCreator,  postPostActionCreator , addNewPostTextActionCreator} from './../../redux/postReducer' 
 
 
 
