@@ -1,8 +1,6 @@
 import React from 'react'; 
 import styles from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom'; 
-import {sendMessageActionCreator , addNewTextMessageActionCreator} from './../../redux/dialogReducer' 
-
 
 
 const Dialogs = (props) => {
@@ -18,35 +16,20 @@ const Dialogs = (props) => {
         </NavLink>
     );
     
-
-    
     let messageElements = props.messages.map( m => 
         <div className={styles.Dialogs_message_item}>{m.message}</div> 
     );
-
     
-    let newText= React.createRef();
 
-    
-    let sendMessage = () => {
-        props.dispatch(sendMessageActionCreator());
-    }
+    let sendMessageToContainer = () => {props.sendMessage()}
 
-    let textAreaOnchange = () =>{
-        let message = newText.current.value;
-        let action = addNewTextMessageActionCreator(message);
-        props.dispatch(action);
-
+    let sendOnchangeText = (element) =>{
+        let message = element.target.value;
+        props.textAreaOnchange(message)
     };
 
-
-    
-
-    
     return (
-       
     <div className={styles.Dialogs}>
-
         <div className={styles.Dialogs_contacts}>
             {contactElements}
         </div>
@@ -56,18 +39,13 @@ const Dialogs = (props) => {
         </div>
 
         <div className={styles.Dialogs_textarea}>
-
-            <textarea   ref={newText} 
-                        className = {styles.Dialogs_textare_istext}
+            <textarea   className = {styles.Dialogs_textare_istext}
                         value={props.newMessageText}
-                        onChange={textAreaOnchange}
-                                    />
-            
-
-            <button  onClick   = {sendMessage} 
+                        onChange={sendOnchangeText}
+            />
+            <button  onClick   = {sendMessageToContainer} 
                      className = {styles.Dialogs_textare_isbutton}>Send
             </button>
-
         </div>
 
     </div>

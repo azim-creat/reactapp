@@ -12,7 +12,8 @@ import './index.css';
 
     ReactDOM.render(
         <BrowserRouter>
-            <App  state     = {store.getState()} 
+            <App  
+                  state     = {store.getState()} 
                   dispatch  = {store.dispatch.bind(store)}
                   />
         </BrowserRouter>
