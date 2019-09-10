@@ -3,8 +3,8 @@ import dialogReducer from './dialogReducer';
 import postReducer from './postReducer';
 
 let redusers = combineReducers({
-    dualogModul: dialogReducer,
-    postModul: postReducer
+    dialogModul: dialogReducer,
+    postsModul: postReducer
 }); 
 
 let store = createStore(redusers);

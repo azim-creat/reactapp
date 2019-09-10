@@ -1,5 +1,5 @@
 import * as serviceWorker from './serviceWorker';
-import store from './redux/state'
+import store from './redux/reduxStore'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -23,5 +23,9 @@ import './index.css';
 
 
 rerenderTree(store.getState());
-store.subscribe(rerenderTree);
+store.subscribe(()=>{
+    let state = store.getState();
+    rerenderTree(state)
+}
+);
 serviceWorker.unregister();
