@@ -18,9 +18,9 @@ const DialogsContainer = (props) => {
 
     return ( <Dialogs   sendMessage ={sendMessage}
                         textAreaOnchange ={textAreaOnchange} 
-                        contacts ={props.state.dialogModul.contacts}
-                        messages = {props.state.dialogModul.messages}      
-                        newMessageText = {props.state.dialogModul.newMessageText}      
+                        contacts ={props.state.contacts}
+                        messages = {props.state.messages}      
+                        newMessageText = {props.state.newMessageText}      
             />);
 }
 

@@ -22,9 +22,9 @@ const  PostsContainer = (props) =>{
     return (<Posts  publishPost={publishPost}
                     onchangeTitle={onchangeTitle} 
                     onchangePostText={onchangePostText}
-                    postItems ={props.state.postsModul.postItems}
-                    currentPostText={props.state.postsModul.textPost}
-                    currentTitleText={props.state.postsModul.title}
+                    postItems ={props.state.postItems}
+                    currentPostText={props.state.textPost}
+                    currentTitleText={props.state.title}
             />  );
 
 

@@ -20,14 +20,14 @@ function App(props) {
                     < Route path='/main' component={Main} />
                     < Route path='/professors' component={Professors} />
                     < Route path='/dialogs' render={ () => (
-                                                            <DialogsContainer state = {props.state}
+                                                            <DialogsContainer state = {props.state.dialogModul}
                                                                               dispatch = {props.dispatch}
                                                             />)
                                                     } 
                                                                     
                     />
 
-                    <Route path='/posts' render={ () => <PostsContainer   state = {props.state}
+                    <Route path='/posts' render={ () => <PostsContainer   state = {props.state.postsModul}
                                                                           dispatch = {props.dispatch}
                                                     
                                                         />
