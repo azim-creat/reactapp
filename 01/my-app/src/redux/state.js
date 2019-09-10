@@ -1,4 +1,6 @@
 
+import dialogReducer from './dialogReducer';
+import postReducer from './postReducer';
 let store ={
 
     _state : {
@@ -58,79 +60,13 @@ let store ={
     },
 
     dispatch(action) {
-        if(action.type === 'SEND_MESSAGE'){
-            let newMessage ={
-                id:6,
-                message: this.getState().dialogModul.newMessageText
-            };
-        
-            this.getState().dialogModul.messages.push(newMessage);
-            this.getState().dialogModul.newMessageText = '';
-            this._callSubscriber(this.getState());
 
-        } else if ( action.type === 'ADD_NEW_TEXT_MESSAGE' ) {
-            this.getState().dialogModul.newMessageText= action.newMassage;
-            this._callSubscriber(this.getState());
-        }else if ( action.type === 'ADD_NEW_TITLE_TEXT' ) {
-            this.getState().postsModul.title = action.newTitleText;
-            this._callSubscriber(this.getState());
-        }else if ( action.type === 'ADD_NEW_POST_TEXT' ) {
-            this.getState().postsModul.textPost = action.newPostText;
-            this._callSubscriber(this.getState());
-        }else if(action.type === 'POST_POST'){
-            let newPost = {
-                id:4,
-                title: this.getState().postsModul.title,
-                postText: this.getState().postsModul.textPost
-            };
-        
-            this.getState().postsModul.postItems.push(newPost);
-            this.getState().postsModul.title = '';
-            this.getState().postsModul.textPost = '';
-            this._callSubscriber(this.getState());
+        this.getState().dialogModul = dialogReducer(this.getState().dialogModul , action);
+        this.getState().postsModul = postReducer(this.getState().postsModul , action);
+        this._callSubscriber(this.getState());
 
         }
-    }
-
-    
-};
-
-/*Экспорт в Dialog для того чтобы  */
-export const sendMessageActionCreator = ()=>{
-    return {
-        type: 'SEND_MESSAGE'
-    }
-};
-
-
-export const addNewTextMessageActionCreator =(message)=>{
-    return {
-        type: 'ADD_NEW_TEXT_MESSAGE',
-        newMassage: message
-
-    }
-};
-
-export const postPostActionCreator =() =>{
-    return {
-        type: 'POST_POST'
-    }
-};
-
-export const addNewTitleTextActionCreator =(onchangeTitleText)=>{
-    return {
-        type: 'ADD_NEW_TITLE_TEXT',
-        newTitleText: onchangeTitleText
-    }
-};
-export const addNewPostTextActionCreator =(onchangePostText)=>{
-    return {
-        type: 'ADD_NEW_POST_TEXT',
-        newPostText: onchangePostText
-    }
-};
-
-
+    };
 
 export default store;
 window.store = store;
