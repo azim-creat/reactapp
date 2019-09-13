@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Posts.module.css';
 
 const  Posts = (props) =>{
+    debugger;
     let mapedPostsfromState = props.postItems.map (p =>
         <div className={styles.Posts_items_item}>
             <div className={styles.Posts_item_title}>{p.title}</div>
