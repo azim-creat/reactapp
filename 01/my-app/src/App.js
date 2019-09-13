@@ -8,17 +8,17 @@ import { Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import PostsContainer from './components/Posts/PostsContainer';
 
-function App() {
+const App = () => {
     return (
         <div className='main__grid'>
             <Header />
             <Sidebar />
 
             <div className='app_main_content'>
-                < Route path='/main' component={Main} />
-                < Route path='/professors' component={Professors} />
-                < Route path='/dialogs' render={() => (<DialogsContainer />)} />
-                <Route path='/posts' render={() => <PostsContainer />} />
+                <Route path='/main' component={Main} />
+                <Route path='/professors' component={Professors} />
+                <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                <Route path='/posts' render={() => <PostsContainer />}/>
             </div>
         </div>
     );
