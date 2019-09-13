@@ -15,9 +15,9 @@ const DialogsContainer = () => {
                 }
                 return <Dialogs sendMessage={sendMessage}
                     textAreaOnchange={textAreaOnchange}
-                    contacts={store.getState().contacts}
-                    messages={store.getState().messages}
-                    newMessageText={store.getState().newMessageText}/>
+                    contacts={store.getState().dialogModul.contacts}
+                    messages={store.getState().dialogModul.messages}
+                    newMessageText={store.getState().dialogModul.newMessageText}/>
             }
         }
         </StoreContext.Consumer>

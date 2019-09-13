@@ -22,9 +22,9 @@ const PostsContainer = () => {
                     return <Posts publishPost={publishPost}
                         onchangeTitle={onchangeTitle}
                         onchangePostText={onchangePostText}
-                        postItems={store.getState().postItems}
-                        currentPostText={store.getState().textPost}
-                        currentTitleText={store.getState().title}/>
+                        postItems={store.getState().postsModul.postItems}
+                        currentPostText={store.getState().postsModul.textPost}
+                        currentTitleText={store.getState().postsModul.title}/>
                 }
             }
         </StoreContext.Consumer>
