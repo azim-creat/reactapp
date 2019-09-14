@@ -1,22 +1,31 @@
 .sidebar{
-    background-color: brown;
-    grid-area: sidebar;
+    margin: 10px;
 }
-
+.sidebar_items{
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
 .Sidebar_icon{
     padding: 10px;
     display: block;
     cursor: pointer;
 }
+.Sidebar_icon:first-child{
+    border-radius: 5px 5px 0px 0px;
+}
+.Sidebar_icon:last-child{
+    border-radius: 0px 0px 5px 5px ;
+}
 
 a{
     text-decoration: none;
-    color:white;
+    color:black;
   }
 
 .activeLink{
-    color: darkslategrey;
-    background-color: coral;
+    color: rgb(26, 29, 29);
+    background-color: #B2EBF2;
     background-size: cover;
     
 }

@@ -13,7 +13,7 @@ const App = () => {
         <div className='main__grid'>
             <Header />
             <Sidebar />
-
+            
             <div className='app_main_content'>
                 <Route path='/main' component={Main} />
                 <Route path='/professors' component={Professors} />
