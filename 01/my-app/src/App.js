@@ -5,8 +5,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Main from './components/Main/Main.jsx';
 import Professors from './components/Professors/Professors.jsx';
 import { Route } from 'react-router-dom';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import PostsContainer from './components/Posts/PostsContainer';
+import SuperDialogscContainer from './components/Dialogs/DialogsContainer';
+import SuperPostsContainer from './components/Posts/PostsContainer';
 
 const App = () => {
     return (
@@ -17,8 +17,8 @@ const App = () => {
             <div className='app_main_content'>
                 <Route path='/main' component={Main} />
                 <Route path='/professors' component={Professors} />
-                <Route path='/dialogs' render={() => <DialogsContainer />}/>
-                <Route path='/posts' render={() => <PostsContainer />}/>
+                <Route path='/dialogs' render={() => <SuperDialogscContainer />}/>
+                <Route path='/posts' render={() => <SuperPostsContainer />}/>
             </div>
         </div>
     );

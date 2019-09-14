@@ -37,25 +37,26 @@ let initialithation = {
 
 
 const postReducer =(state = initialithation, action) =>{
-
     switch(action.type){
         case ADD_NEW_TITLE_TEXT:
-            state.title = action.newTitleText;
-            return state;
+            return{
+                ...state,
+                title: action.newTitleText,
+            }
         case ADD_NEW_POST_TEXT:
-            state.textPost = action.newPostText;
-            return state;
-        case POST_POST:
-            let newPost = {
-                id:4,
-                title: state.title,
-                postText: state.textPost
+            return {
+                ...state,
+                textPost : action.newPostText
             };
-        
-            state.postItems.push(newPost);
-            state.title = '';
-            state.textPost = '';
-            return state;
+        case POST_POST:
+            let title = state.title;
+            let postText = state.postText
+            return {
+                ...state,
+                title : '',
+                textPost : '',
+                postItems: [...state.postItems , {id:5, title: title , postText: postText}]
+            };
         default :
         return state;
     }
