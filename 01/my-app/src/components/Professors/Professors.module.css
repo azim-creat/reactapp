@@ -1,3 +1,11 @@
-.Professors_active{
-background-color: aquamarine !important;
+.Professors{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Professors_oneItem{
+    
+    margin: 5px;
+  border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }

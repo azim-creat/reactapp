@@ -50,7 +50,7 @@ const postReducer =(state = initialithation, action) =>{
             };
         case POST_POST:
             let title = state.title;
-            let postText = state.postText
+            let postText = state.textPost
             return {
                 ...state,
                 title : '',

@@ -1,14 +1,14 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
 const ADD_NEW_TEXT_MESSAGE = 'ADD_NEW_TEXT_MESSAGE';
 
-export const sendMessageActionCreator = ()=>{
+export const sendMessageActionCreator = () => {
     return {
         type: SEND_MESSAGE
     }
 };
 
 
-export const addNewTextMessageActionCreator =(message)=>{
+export const addNewTextMessageActionCreator = (message) => {
     return {
         type: ADD_NEW_TEXT_MESSAGE,
         newMassage: message
@@ -18,7 +18,7 @@ export const addNewTextMessageActionCreator =(message)=>{
 
 
 let initialithation = {
-    contacts : [
+    contacts: [
         { id: 1, fullName: 'Sasha Petrovv' },
         { id: 2, fullName: 'Iosiv Stalin' },
         { id: 3, fullName: 'Engels Chyn' },
@@ -28,8 +28,8 @@ let initialithation = {
         { id: 7, fullName: 'Masha Rasputina' },
         { id: 8, fullName: 'Vladimir Pytin' }
     ],
-    
-    messages : [
+
+    messages: [
         { id: 1, message: 'Hi' },
         { id: 2, message: 'Whats Up?' },
         { id: 3, message: 'Fine, What about you?' },
@@ -38,30 +38,31 @@ let initialithation = {
         { id: 6, message: 'By' },
     ],
 
-    newMessageText :'Write down new message' 
+    newMessageText: 'Write down new message'
 
 };
 
 
-export const dialogReducer =(state = initialithation, action) => {
+export const dialogReducer = (state = initialithation, action) => {
 
-    switch(action.type){
-        case SEND_MESSAGE: 
-        let newMessageText = state.newMessageText;
-        return{
-            ...state,
-            newMessageText : '',
-            messages: [ ...state.messages , { id:7,   message: newMessageText} ]
-        }
+    switch (action.type) {
+        case SEND_MESSAGE:
+            let newMessageText = state.newMessageText;
+            return {
+                ...state,
+                newMessageText: '',
+                messages: [...state.messages, { id: 7, message: newMessageText }]
+            }
 
-        case  ADD_NEW_TEXT_MESSAGE:
-            return{
+        case ADD_NEW_TEXT_MESSAGE:
+            return {
                 ...state,
                 newMessageText: action.newMassage
             }
-    }
-
-    return state;
+            default :
+            return state;
+    };
+    
 };
 
 export default dialogReducer;
