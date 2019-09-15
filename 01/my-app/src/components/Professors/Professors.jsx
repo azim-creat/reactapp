@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Professors.module.css';
+import userImg from '../../assets/img/user.png'
 
 
 
@@ -7,11 +8,16 @@ import styles from './Professors.module.css';
 const Professors = (props) => {
     let mappedprofessorsItems = props.professors.map(p =>
         <div className={styles.Professors_oneItem} key={p.id}>
-            <img src={p.profileImg} alt="" />
 
-            <div className={styles.Professors_FullName} >{p.fullname}</div>
+            <div className={styles.Professors_header}>
+                <img className={styles.Professors_img} src={userImg} alt="" />
+    
+                <div >
+                    <div className={styles.Professors_FullName} >{p.fullname}</div>
+                    <div className={styles.Professors_Rang} >{p.rang}</div>
+                </div>
+            </div>
 
-            <div className={styles.Professors_Rang} >{p.rang}</div>
             <div className={styles.Professors_Status} >{p.status}</div>
 
             <div className={styles.Professors_Location} >
@@ -23,8 +29,8 @@ const Professors = (props) => {
                 </div >
             </div>
             <div>{p.followed
-                ? <button onClick={() => { props.unfollow(p.id) }}>Unfollow</button>
-                : <button onClick={() => { props.follow(p.id) }}>Follow</button>
+                ? <button className={styles.Professors_Button} onClick={() => { props.unfollow(p.id) }}>Unfollow</button>
+                : <button className={styles.Professors_Button} onClick={() => { props.follow(p.id) }}>Follow</button>
             }</div>
         </div>)
 
