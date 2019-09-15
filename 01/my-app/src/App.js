@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import SuperDialogscContainer from './components/Dialogs/DialogsContainer';
 import SuperPostsContainer from './components/Posts/PostsContainer';
 import ProfessorsContainer from './components/Professors/ProfessorsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route path='/dialogs' render={() => <SuperDialogscContainer />}/>
                 <Route path='/posts' render={() => <SuperPostsContainer />}/>
                 <Route path='/professors' render={() => <ProfessorsContainer />}/>
+                <Route path='/users' render={() => <UsersContainer />}/>
             </div>
         </div>
     );

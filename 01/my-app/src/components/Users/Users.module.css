@@ -1,0 +1,27 @@
+.Students{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.Students_oneItem{
+    margin: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.Students_header{
+  display: flex;
+  justify-content: space-between;
+}
+.Students_img{
+  width: 80px;
+  height: 80px;
+}
+.Students_FullName{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.Students_Button{
+  width: 100%;
+}
