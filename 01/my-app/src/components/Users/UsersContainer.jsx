@@ -1,32 +1,34 @@
 import React from 'react';
-import Users from "./Users";
-import { connect } from "react-redux";
-import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setUsersTotalCountAC } from "../../redux/usersReducer";
+import Users from './Users';
+import Preloader from '../Preloader/Preloader'
+import { connect } from 'react-redux';
+import { follow, setUsers, unfollow, setCurrentPage, setTotlaUsersCount, toggleIsFitching } from '../../redux/usersReducer';
 import * as axios from 'axios';
 
-
-
-
-/*        000000000000000000000000     */
 class UsersContainer extends React.Component {
     componentDidMount() {
+        this.props.toggleIsFitching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
+                this.props.toggleIsFitching(false);
                 this.props.setUsers(response.data.items);
                 this.props.setTotlaUsersCount(response.data.totalCount);
             });
     }
 
     onPageChanged = (pageNumber) => {
+        this.props.toggleIsFitching(true);
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(response => {
+                this.props.toggleIsFitching(false);
                 this.props.setUsers(response.data.items);
             });
     }
 
     render(){
-        return(
+        return<>
+            {this.props.isFitching ? <Preloader/>: null}
             <Users totalUsersCount = {this.props.totalUsersCount}
             pageSize = {this.props.pageSize}
             currentPage = {this.props.currentPage}
@@ -35,39 +37,20 @@ class UsersContainer extends React.Component {
             follow = {this.props.follow}
             onPageChanged = {this.onPageChanged}
             />
-        )
+        </>
     }
 
 }
-/*        000000000000000000000000     */
+
 let mapStateToProps = (state) => {
     return {
         users: state.usersModul.users,
         pageSize: state.usersModul.pageSize,
         totalUsersCount: state.usersModul.totalUsersCount,
-        currentPage: state.usersModul.currentPage
+        currentPage: state.usersModul.currentPage,
+        isFitching: state.usersModul.isFitching
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber));
-        },
-        setTotlaUsersCount: (totalCount) => {
-            dispatch(setUsersTotalCountAC(totalCount))
-        }
 
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, { follow, setUsers, unfollow, setCurrentPage, setTotlaUsersCount, toggleIsFitching})(UsersContainer);

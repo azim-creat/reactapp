@@ -18,7 +18,7 @@ const  Sidebar = () => {
             <NavLink to='/departaments' className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Departaments       </NavLink>
             <NavLink to='/ivents'       className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Ivents             </NavLink>
             <NavLink to='/multi'        className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Multi Purpose      </NavLink>
-            </div>s
+            </div>
         </div>
     );
 }
