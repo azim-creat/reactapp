@@ -38,9 +38,10 @@ let Profile = (props)=>{
         <div className={styles.profileInfo}>
             <div className={styles.profileInfo_img}><img src={props.profile.photos.small} alt=""/></div>
             <div className={styles.profileInfo_text}> 
-                <div className={styles.profileInfo_text_fullName}>{props.firstName} {props.lastName}</div>
-                <div className={styles.profileInfo_text_status}>{props.status}</div>
-                <div className={styles.profileInfo_text_rang}>{props.rang}</div>
+                <div className={styles.profileInfo_text_fullName}>{props.profile.fullName}</div>
+                <div className={styles.profileInfo_text_fullName}>{props.profile.aboutMe}</div>
+                <div className={styles.profileInfo_text_status}>{props.profile.lookingForAJob}</div>
+                <div className={styles.profileInfo_text_rang}>{props.profile.lookingForAJobDescription}</div>
 
             </div>
         </div>
