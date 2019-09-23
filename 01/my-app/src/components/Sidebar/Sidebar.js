@@ -5,6 +5,7 @@ import {NavLink} from 'react-router-dom';
 const  Sidebar = () => {
     return ( <div className={styles.sidebar} >
             <div className={styles.sidebar_items}>
+            <NavLink to='/profile'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Profile            </NavLink>
             <NavLink to='/main'         className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Dashboard          </NavLink>
             <NavLink to='/dialogs'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Dialogs            </NavLink>
             <NavLink to='/professors'   className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Profesors          </NavLink>

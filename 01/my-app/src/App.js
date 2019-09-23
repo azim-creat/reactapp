@@ -8,6 +8,7 @@ import SuperDialogscContainer from './components/Dialogs/DialogsContainer';
 import SuperPostsContainer from './components/Posts/PostsContainer';
 import ProfessorsContainer from './components/Professors/ProfessorsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                 <Route path='/posts' render={() => <SuperPostsContainer />}/>
                 <Route path='/professors' render={() => <ProfessorsContainer />}/>
                 <Route path='/users' render={() => <UsersContainer />}/>
+                <Route path='/profile' render={() => <ProfileContainer />}/>
             </div>
         </div>
     );
