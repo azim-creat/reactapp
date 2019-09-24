@@ -4,13 +4,15 @@ import postReducer from './postReducer';
 import professorsReducer from './professorsReducer';
 import usersReducer from './usersReducer';
 import profileReducer from './profileReducer';
+import authReducer from './authReducer';
 
 let redusers = combineReducers({
     dialogModul: dialogReducer,
     postsModul: postReducer,
     professorModul: professorsReducer,
     usersModul: usersReducer,
-    profileModul: profileReducer
+    profileModul: profileReducer,
+    authModul: authReducer,
 }); 
 
 let store = createStore(redusers);

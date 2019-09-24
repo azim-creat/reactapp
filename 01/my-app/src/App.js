@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Sidebar from './components/Sidebar/Sidebar';
 import Main from './components/Main/Main.jsx';
 import { Route } from 'react-router-dom';
@@ -13,7 +13,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 const App = () => {
     return (
         <div className='main__grid'>
-            <Header />
+            <HeaderContainer />
             <Sidebar />
             
             <div className='app_main_content'>

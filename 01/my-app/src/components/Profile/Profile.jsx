@@ -7,7 +7,7 @@ import Preloader from '../Preloader/Preloader';
 
 
 let Profile = (props)=>{
-    let mapedPosts = props.myPosts.map(p => <div className={styles.publishedPosts}>
+    let mapedPosts = props.myPosts.map(p => <div className={styles.publishedPosts} key={p.id}>
 
             <div className={styles.publishedPosts_item}>
                     <div className={styles.publishedPosts_title}>{p.title}</div>
