@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { addNewTextMessageActionCreator, sendMessageActionCreator } from './../../redux/dialogReducer';
 import Dialogs from './Dialogs';
 //import StoreContext from '../../StoreContext';

@@ -1,4 +1,3 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import Professors from './Professors';
 import {followAC, unfollowAC, setProfAC} from './../../redux/professorsReducer'

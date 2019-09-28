@@ -1,4 +1,3 @@
-import React from 'react';
 import { addNewTitleTextActionCreator, postPostActionCreator, addNewPostTextActionCreator } from './../../redux/postReducer'
 import Posts from './Posts';
 //import StoreContext from '../../StoreContext'
