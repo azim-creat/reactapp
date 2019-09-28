@@ -50,9 +50,10 @@ let Users = (props) => {
                 </div>
                 <div>
                     {s.followed
-                        ? <button className={styles.Students_Button}
+                        ? <button disabled={props.followingInProgress.some(id => id === s.id)} className={styles.Students_Button}
 
                             onClick={() => {
+                                props.toggleProgressOfFollowing(true, s.id)
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${s.id}`,{
                                     withCredentials: true ,
                                      headers:{
@@ -64,13 +65,15 @@ let Users = (props) => {
                                         if(response.data.resultCode===0){
                                             props.unfollow(s.id)
                                         }
+                                        props.toggleProgressOfFollowing(false, s.id)
                                     });
                             }}>
                             Unfollow
                         </button>
 
-                        : <button className={styles.Students_Button}
+                        : <button disabled={props.followingInProgress.some(id => id === s.id)} className={styles.Students_Button}
                             onClick={() => {
+                                props.toggleProgressOfFollowing(true, s.id)
                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${s.id}`,{},{
                                     withCredentials: true,
                                 headers:{
@@ -81,6 +84,7 @@ let Users = (props) => {
                                         if(response.data.resultCode===0){
                                             props.follow(s.id)
                                         }
+                                        props.toggleProgressOfFollowing(false, s.id)
                                     });
                 
                             }}>

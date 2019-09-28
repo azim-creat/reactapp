@@ -4,6 +4,7 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FITCHING = 'TOGGLE_IS_FITCHING';
+const TOGGLE_PROGRESS_OF_FOLLOWING = 'TOGGLE_PROGRESS_OF_FOLLOWING';
 
 let initialState = {
     users: [ ],
@@ -11,6 +12,7 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFitching: false,
+    followingInProgress:[]
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -47,6 +49,13 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_IS_FITCHING : {
             return { ...state, isFitching: action.isFitching}
         }
+        case TOGGLE_PROGRESS_OF_FOLLOWING : {
+            return { ...state, 
+                followingInProgress: action.isFitching
+                ? [...state.followingInProgress, action.userId ]
+                :state.followingInProgress.filter(id => id !== action.userId)
+            }
+        }
         default:
             return state;
     }
@@ -59,5 +68,6 @@ export const setUsers = (users) => ({type: SET_USERS, users })
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage })
 export const setTotlaUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
 export const toggleIsFitching = (isFitching) => ({type: TOGGLE_IS_FITCHING, isFitching })
+export const toggleProgressOfFollowing = (isFitching, userId) => ({type: TOGGLE_PROGRESS_OF_FOLLOWING, isFitching, userId })
 
 export default usersReducer;

@@ -2,7 +2,7 @@ import React from 'react'
 import Users from './Users'
 import Preloader from '../Preloader/Preloader'
 import { connect } from 'react-redux'
-import { follow, setUsers, unfollow, setCurrentPage, setTotlaUsersCount, toggleIsFitching } from '../../redux/usersReducer'
+import { follow, setUsers, unfollow, setCurrentPage, setTotlaUsersCount, toggleIsFitching, toggleProgressOfFollowing} from '../../redux/usersReducer'
 import {userAPI} from '../../api/api'
 
 
@@ -34,6 +34,7 @@ class UsersContainer extends React.Component {
     render(){
         return<>
             {this.props.isFitching ? <Preloader/>: null}
+            
             <Users totalUsersCount = {this.props.totalUsersCount}
             pageSize = {this.props.pageSize}
             currentPage = {this.props.currentPage}
@@ -41,6 +42,8 @@ class UsersContainer extends React.Component {
             unfollow = {this.props.unfollow}
             follow = {this.props.follow}
             onPageChanged = {this.onPageChanged}
+            followingInProgress = {this.props.followingInProgress}
+            toggleProgressOfFollowing = {this.props.toggleProgressOfFollowing}
             />
         </>
     }
@@ -53,9 +56,18 @@ let mapStateToProps = (state) => {
         pageSize: state.usersModul.pageSize,
         totalUsersCount: state.usersModul.totalUsersCount,
         currentPage: state.usersModul.currentPage,
-        isFitching: state.usersModul.isFitching
+        isFitching: state.usersModul.isFitching,
+        followingInProgress: state.usersModul.followingInProgress,
+
     }
 }
 
 
-export default connect(mapStateToProps, { follow, setUsers, unfollow, setCurrentPage, setTotlaUsersCount, toggleIsFitching})(UsersContainer);
+export default connect(mapStateToProps, { follow, 
+                                          setUsers, 
+                                          unfollow, 
+                                          setCurrentPage, 
+                                          setTotlaUsersCount, 
+                                          toggleIsFitching, 
+                                          toggleProgressOfFollowing}
+                        )(UsersContainer)
