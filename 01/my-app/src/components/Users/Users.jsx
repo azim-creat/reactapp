@@ -53,9 +53,8 @@ let Users = (props) => {
                         ? <button className={styles.Students_Button}
 
                             onClick={() => {
-                                debugger;
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${s.id}`,{
-                                    whithCredentials: true ,
+                                    withCredentials: true ,
                                      headers:{
                                     "API-KEY":"7521dd95-7452-4083-aa0f-a142132db7e3"
                                 }
