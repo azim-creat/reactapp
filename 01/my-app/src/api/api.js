@@ -14,14 +14,7 @@ export const usersAPI = {
             .then(response =>{
                 return response.data
             })
-    },
-    setPage(pageNumber,pageSize){
-        return instance.get(`users?page=${pageNumber}&count=${pageSize}`)
-            .then(response =>{
-                return response.data
-            })
-    },
-    
+    },   
 
 }
 
