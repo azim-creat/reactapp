@@ -76,11 +76,10 @@ export const toggleProgressOfFollowing = (isFitching, userId) => ({ type: TOGGLE
 export const getUser = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFitching(true));
-
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
+        usersAPI.getUsers(currentPage, pageSize).then(response => {
             dispatch(toggleIsFitching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotlaUsersCount(data.totalCount));
+            dispatch(setUsers(response.data.items));
+            dispatch(setTotlaUsersCount(response.data.totalCount));
         });
     }
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { titleOnchanged, textOnchanged, publishPost, setUserProfile } from '../../redux/profileReducer'
-import * as axios from 'axios';
+import { titleOnchanged, textOnchanged, publishPost, setUserProfile, getUserProfile } from '../../redux/profileReducer'
 import {withRouter} from 'react-router-dom';
 
 
@@ -12,13 +11,7 @@ class ProfileContainer extends React.Component {
         if (!userId){
              userId=2
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-       
-            .then(response => { 
-              
-                this.props.setUserProfile(response.data);
-    
-            });
+        this.props.getUserProfile(userId);
     }
     render() {
         return (
@@ -26,8 +19,6 @@ class ProfileContainer extends React.Component {
         )
     }
 }
-
-// profile={this.props.profile}
 let mapStateToProps = (state) => {
     return {
 
@@ -42,10 +33,11 @@ let mapStateToProps = (state) => {
         inputedTitle: state.profileModul.inputedTitle,
         inputedText: state.profileModul.inputedText,
 
-        profile:state.profileModul.profile
+        profile:state.profileModul.profile,
+        isAuth: state.authModul.isAuth
     }
 }
 
 let WitUrlDataContainerComponent = withRouter(ProfileContainer)
  
-export default connect(mapStateToProps, { titleOnchanged, textOnchanged, publishPost, setUserProfile })(WitUrlDataContainerComponent);
+export default connect(mapStateToProps, {getUserProfile, titleOnchanged, textOnchanged, publishPost, setUserProfile })(WitUrlDataContainerComponent);

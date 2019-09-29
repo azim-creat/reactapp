@@ -36,7 +36,7 @@ let Users = (props) => {
                     </div>
                 </div>
 
-                <div className={styles.Students_Status} >{s.status}</div>
+                <div className={styles.Students_Status} >{s.followed? 'уже одписан':'ещё не подписан'}</div>
 
                 <div className={styles.Students_Location} >
                     <div className={styles.Students_Location_faculcity} >

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Profile.module.css';
 //import profileImg from '../../assets/img/user.png'
 import Preloader from '../Preloader/Preloader';
+import {Redirect} from 'react-router-dom'
 
 
 
@@ -31,7 +32,9 @@ let Profile = (props)=>{
     }
     if(!props.profile){
         return <Preloader/>
-    }
+    };
+
+   if (!props.isAuth) return <Redirect to={"/login"} /> ;
    
     return <div className={styles.Profile}>
  

@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api'
+
 let initialithation = {
     profileInfo: {
         profileImg: 'path to img',
@@ -29,6 +31,17 @@ export const titleOnchanged = (titleOnchanged) => ({ type: TITLE_ONCH, titleOnch
 export const textOnchanged = (textOnchanged) => ({ type: TEXT_ONCH, textOnchanged });
 export const publishPost = () => ({ type: PUBLISH_POST });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const getUserProfile =(userId)=>{
+    return (dispatch)=>{
+        usersAPI.getProfile(userId)
+       
+            .then(response => { 
+              
+                dispatch(setUserProfile(response.data));
+    
+            });
+    }
+}
 
 const profileReducer = (state = initialithation, action) => {
     switch (action.type) {
