@@ -1,24 +1,30 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Sidebar from './components/Sidebar/Sidebar';
 import Main from './components/Main/Main.jsx';
-import Professors from './components/Professors/Professors.jsx';
 import { Route } from 'react-router-dom';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import PostsContainer from './components/Posts/PostsContainer';
+import SuperDialogscContainer from './components/Dialogs/DialogsContainer';
+import SuperPostsContainer from './components/Posts/PostsContainer';
+import ProfessorsContainer from './components/Professors/ProfessorsContainer';
+import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
+import Login from './components/Login/Login';
 
 const App = () => {
     return (
         <div className='main__grid'>
-            <Header />
+            <HeaderContainer />
             <Sidebar />
-
+            
             <div className='app_main_content'>
                 <Route path='/main' component={Main} />
-                <Route path='/professors' component={Professors} />
-                <Route path='/dialogs' render={() => <DialogsContainer />}/>
-                <Route path='/posts' render={() => <PostsContainer />}/>
+                <Route path='/dialogs' render={() => <SuperDialogscContainer />}/>
+                <Route path='/login' render={() => <Login />}/>
+                <Route path='/posts' render={() => <SuperPostsContainer />}/>
+                <Route path='/professors' render={() => <ProfessorsContainer />}/>
+                <Route path='/users' render={() => <UsersContainer />}/>
+                <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
             </div>
         </div>
     );

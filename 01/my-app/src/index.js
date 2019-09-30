@@ -5,14 +5,16 @@ import App from './App';
 import './index.css';
 import store from './redux/reduxStore';
 import * as serviceWorker from './serviceWorker';
-import {Provider} from './StoreContext';
+//import {Provider} from './StoreContext';
+import { Provider } from 'react-redux';
 
-let rerenderTree =()=>{ReactDOM.render(<BrowserRouter><Provider store={store}><App /></Provider></BrowserRouter>, document.getElementById('root'));};
 
-rerenderTree();
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}><App />
+        </Provider>
+    </BrowserRouter>
+    , document.getElementById('root'));
 
-store.subscribe(() => {
-    rerenderTree()
-}
-);
+
 serviceWorker.unregister();

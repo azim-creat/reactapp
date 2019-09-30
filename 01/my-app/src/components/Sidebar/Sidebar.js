@@ -3,12 +3,13 @@ import styles from './Sidebar.module.css';
 import {NavLink} from 'react-router-dom';
 
 const  Sidebar = () => {
-    return ( <div className='sidebar' >
-            Test of Sidebar
+    return ( <div className={styles.sidebar} >
+            <div className={styles.sidebar_items}>
+            <NavLink to='/profile'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Profile            </NavLink>
             <NavLink to='/main'         className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Dashboard          </NavLink>
             <NavLink to='/dialogs'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Dialogs            </NavLink>
             <NavLink to='/professors'   className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Profesors          </NavLink>
-            <NavLink to='/students'     className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Students           </NavLink>
+            <NavLink to='/users'        className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Users              </NavLink>
             <NavLink to='/staffs'       className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Staffs             </NavLink>
             <NavLink to='/reports'      className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Reports            </NavLink>
             <NavLink to='/posts'        className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Posts                </NavLink>
@@ -18,7 +19,7 @@ const  Sidebar = () => {
             <NavLink to='/departaments' className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Departaments       </NavLink>
             <NavLink to='/ivents'       className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Ivents             </NavLink>
             <NavLink to='/multi'        className={styles.Sidebar_icon}  activeClassName={styles.activeLink}>Multi Purpose      </NavLink>
-
+            </div>
         </div>
     );
 }

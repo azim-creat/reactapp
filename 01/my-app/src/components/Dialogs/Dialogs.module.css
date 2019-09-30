@@ -16,9 +16,13 @@
 
 
 .Dialogs_its_dialog{
-    background-color: indianred;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+
     grid-area: isdialog;
     padding: 10px;  
+    overflow-y: scroll;
 }
 
 .Dialogs_message_item{
@@ -29,8 +33,18 @@
 }
 
 .Dialogs_contacts{
-    background-color: darkorange;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+
     grid-area: iscontact
+}
+
+.Dialogs_one_contact:first-child{
+    border-radius: 5px 5px 0px 0px;
+}
+.Dialogs_one_contact:last-child{
+    border-radius: 0px 0px 5px 5px ;
 }
 
 .Dialogs_textarea{
@@ -46,6 +60,6 @@
 
 .activeLink{
     color: darkslategrey;
-    background-color: coral;
+    background-color: #B2EBF2;
     background-size: cover;
 }

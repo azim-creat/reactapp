@@ -1,27 +1,42 @@
-.Professors{
+.Students{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-.Professors_oneItem{
+.Students_oneItem{
     margin: 5px;
     padding: 15px;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
-.Professors_header{
+.Students_header{
   display: flex;
   justify-content: space-between;
 }
-.Professors_img{
+.Students_img{
   width: 80px;
   height: 80px;
 }
-.Professors_FullName{
+.Students_FullName{
   font-size: 20px;
   font-weight: 500;
 }
 
-.Professors_Button{
+.Students_Button{
   width: 100%;
+}
+.pagesLine {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.pagesLine span{
+ margin: 5px;
+ cursor: pointer;
+}
+
+
+.selectedPage{
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
 }
