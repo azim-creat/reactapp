@@ -3,6 +3,7 @@ import styles from './Profile.module.css';
 //import profileImg from '../../assets/img/user.png'
 import Preloader from '../Preloader/Preloader';
 import {Redirect} from 'react-router-dom'
+import ProfileStatus from "./ProfileStatus"
 
 
 
@@ -37,12 +38,12 @@ let Profile = (props)=>{
    if (!props.isAuth) return <Redirect to={"/login"} /> ;
    
     return <div className={styles.Profile}>
- 
+        
         <div className={styles.profileInfo}>
             <div className={styles.profileInfo_img}><img src={props.profile.photos.small} alt=""/></div>
             <div className={styles.profileInfo_text}> 
                 <div className={styles.profileInfo_text_fullName}>{props.profile.fullName}</div>
-                <div className={styles.profileInfo_text_fullName}>{props.profile.aboutMe}</div>
+                <ProfileStatus profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>                <div className={styles.profileInfo_text_fullName}>{props.profile.aboutMe}</div>
                 <div className={styles.profileInfo_text_status}>{props.profile.lookingForAJob}</div>
                 <div className={styles.profileInfo_text_rang}>{props.profile.lookingForAJobDescription}</div>
 
