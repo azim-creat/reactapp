@@ -1,5 +1,5 @@
 import * as axios from 'axios'
-
+// eslint-disable-next-line
 const instance = axios.create({
     whithCredentials: true,
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
@@ -24,13 +24,18 @@ export const usersAPI = {
 
 export const profileAPI = {
     getProfile(userId) {
-        return instance.get(`profile/` + userId);
+        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`, {withCredentials: true});
     },
     getStatus(userId) {
-        return instance.get(`profile/status/` + userId);
+        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/status/${userId}`, {withCredentials: true});
     },
     updateStatus(status) {
-        return instance.put(`profile/status`, { status: status });
+        return axios.put(`https://social-network.samuraijs.com/api/1.0/profile/status`, {status: status },
+                    {
+                 withCredentials: true ,
+                 headers:{"API-KEY":"255406e6-6fa4-4fea-9484-93c226e19ab1"}
+                    }
+                 );
     }
 }
 

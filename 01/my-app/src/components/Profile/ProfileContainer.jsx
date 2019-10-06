@@ -27,7 +27,7 @@ let mapStateToProps = (state) => {
         profileImg: state.profileModul.profileInfo.profileImg,
         firstName: state.profileModul.profileInfo.firstName,
         lastName: state.profileModul.profileInfo.lastName,
-        status: state.profileModul.profileInfo.status,
+        status: state.profileModul.status,
         rang: state.profileModul.profileInfo.rang,
 
         myPosts: state.profileModul.myPosts,

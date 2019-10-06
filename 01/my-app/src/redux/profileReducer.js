@@ -5,7 +5,7 @@ let initialithation = {
         profileImg: 'path to img',
         firstName: 'Azim',
         lastName: 'Azimov',
-        status: 'I am learnig programming',
+        //status: 'I am learnig programming',
         rang: 'student of Bachalor'
     },
 
