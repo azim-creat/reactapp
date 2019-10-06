@@ -16,7 +16,6 @@ let initialithation = {
         { id: 4, title: 'It is forth Title', text: 'There is a plase for txt of this post', vievCount: 14 },
         { id: 5, title: 'It is fiveth Title', text: 'There is a plase for txt of this post', vievCount: 1 }
     ],
-    profile: null,
     inputedTitle: '',
     inputedText: '',
     profile: null,

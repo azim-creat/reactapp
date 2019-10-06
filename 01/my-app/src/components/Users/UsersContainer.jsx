@@ -18,7 +18,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return <>
-            {this.props.isFitching ? <Preloader /> : null}
+            {this.props.isFitching ? <Preloader /> : undefined}
 
             <Users totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
@@ -43,33 +43,8 @@ let mapStateToProps = (state) => {
         currentPage: state.usersModul.currentPage,
         isFitching: state.usersModul.isFitching,
         followingInProgress: state.usersModul.followingInProgress,
-
     }
 }
-
-
-// export default connect(mapStateToProps, {
-//     follow,
-//     setUsers,
-//     unfollow,
-//     setCurrentPage,
-//     setTotlaUsersCount,
-//     toggleIsFitching,
-//     toggleProgressOfFollowing,
-//     getUser
-// }
-// )(UsersContainer)
-
-// export default withAuthRedirect(connect(mapStateToProps,
-//     { follow,
-//         setUsers,
-//         unfollow,
-//         setCurrentPage,
-//         setTotlaUsersCount,
-//         toggleIsFitching,
-//         toggleProgressOfFollowing,
-//         getUser })
-//     (UsersContainer));
 
 export default compose(
     withAuthRedirect,

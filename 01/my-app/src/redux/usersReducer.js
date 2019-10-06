@@ -1,11 +1,4 @@
 import { usersAPI, followAPI } from '../api/api'
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS';
-const SET_CURRENT_PAGE = 'SET_CURENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FITCHING = 'TOGGLE_IS_FITCHING';
-const TOGGLE_PROGRESS_OF_FOLLOWING = 'TOGGLE_PROGRESS_OF_FOLLOWING';
 
 let initialState = {
     users: [],
@@ -16,52 +9,15 @@ let initialState = {
     followingInProgress: []
 };
 
-const usersReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return { ...u, followed: true }
-                    }
-                    return u;
-                })
-            }
-        case UNFOLLOW:
-            return {
-                ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return { ...u, followed: false }
-                    }
-                    return u;
-                })
-            }
-        case SET_USERS: {
-            return { ...state, users: action.users }
-        }
-        case SET_CURRENT_PAGE: {
-            return { ...state, currentPage: action.currentPage }
-        }
-        case SET_TOTAL_USERS_COUNT: {
-            return { ...state, totalUsersCount: action.count }
-        }
-        case TOGGLE_IS_FITCHING: {
-            return { ...state, isFitching: action.isFitching }
-        }
-        case TOGGLE_PROGRESS_OF_FOLLOWING: {
-            return {
-                ...state,
-                followingInProgress: action.isFitching
-                    ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id !== action.userId)
-            }
-        }
-        default:
-            return state;
-    }
-}
+
+
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FITCHING = 'TOGGLE_IS_FITCHING';
+const TOGGLE_PROGRESS_OF_FOLLOWING = 'TOGGLE_PROGRESS_OF_FOLLOWING';
 
 
 export const followSuccess = (userId) => ({ type: FOLLOW, userId })
@@ -107,6 +63,58 @@ export const unfollow = (userId) => {
                 }
                 dispatch(toggleProgressOfFollowing(false, userId))
             });
+    }
+}
+
+
+
+
+
+
+const usersReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case FOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return { ...u, followed: true }
+                    }
+                    return u;
+                })
+            }
+        case UNFOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return { ...u, followed: false }
+                    }
+                    return u;
+                })
+            }
+        case SET_USERS: {
+            return { ...state, users: action.users }
+        }
+        case SET_CURRENT_PAGE: {
+            return { ...state, currentPage: action.currentPage }
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return { ...state, totalUsersCount: action.count }
+        }
+        case TOGGLE_IS_FITCHING: {
+            return { ...state, isFitching: action.isFitching }
+        }
+        case TOGGLE_PROGRESS_OF_FOLLOWING: {
+            return {
+                ...state,
+                followingInProgress: action.isFitching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id !== action.userId)
+            }
+        }
+        default:
+            return state;
     }
 }
 
