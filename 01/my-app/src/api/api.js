@@ -42,6 +42,20 @@ export const profileAPI = {
 export const authAPI = {
     me(){
         return  axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{withCredentials: true})
+    },
+
+    login(email, password, rememberMe = false) {
+        return axios.post(`https://social-network.samuraijs.com/api/1.0/auth/login`, { email, password, rememberMe },
+        {
+            withCredentials: true,
+        headers:{
+            "API-KEY":"255406e6-6fa4-4fea-9484-93c226e19ab1"
+        }
+        }
+        );
+    },
+    logout() {
+        return instance.delete(`https://social-network.samuraijs.com/api/1.0/auth/login`);
     }
 }
 
