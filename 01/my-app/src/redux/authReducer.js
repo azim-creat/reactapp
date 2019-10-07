@@ -1,4 +1,7 @@
 import { authAPI } from "../api/api";
+import {stopSubmit} from "redux-form";
+
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 const TOGGLE_IS_FITCHING = 'TOGGLE_IS_FITCHING';
@@ -39,6 +42,10 @@ export const getAuthUserData = () => (dispatch) => {
             if (response.data.resultCode === 0) {
                 let { id, login, email } = response.data.data;
                 dispatch(setAuthUserData(id, email, login, true));
+            }
+            else {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+                dispatch(stopSubmit("login", {_error: message}));
             }
         });
 }
