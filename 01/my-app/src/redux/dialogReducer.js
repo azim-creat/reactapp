@@ -1,20 +1,12 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
-const ADD_NEW_TEXT_MESSAGE = 'ADD_NEW_TEXT_MESSAGE';
 
-export const sendMessageActionCreator = () => {
+export const sendMessageActionCreator = (newMessageText) => {
     return {
-        type: SEND_MESSAGE
+        type: SEND_MESSAGE,
+        newMessageText
     }
 };
 
-
-export const addNewTextMessageActionCreator = (message) => {
-    return {
-        type: ADD_NEW_TEXT_MESSAGE,
-        newMassage: message
-
-    }
-};
 
 
 let initialithation = {
@@ -36,10 +28,7 @@ let initialithation = {
         { id: 4, message: 'Not bad' },
         { id: 5, message: 'Great' },
         { id: 6, message: 'By' },
-    ],
-
-    newMessageText: 'Write down new message'
-
+    ]
 };
 
 
@@ -47,17 +36,10 @@ export const dialogReducer = (state = initialithation, action) => {
 
     switch (action.type) {
         case SEND_MESSAGE:
-            let newMessageText = state.newMessageText;
+            let newMessageText = action.newMessageText;
             return {
                 ...state,
-                newMessageText: '',
                 messages: [...state.messages, { id: 7, message: newMessageText }]
-            }
-
-        case ADD_NEW_TEXT_MESSAGE:
-            return {
-                ...state,
-                newMessageText: action.newMassage
             }
             default :
             return state;
