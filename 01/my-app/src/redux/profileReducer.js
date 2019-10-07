@@ -5,19 +5,10 @@ let initialithation = {
         profileImg: 'path to img',
         firstName: 'Azim',
         lastName: 'Azimov',
-        //status: 'I am learnig programming',
         rang: 'student of Bachalor'
     },
 
-    myPosts: [
-        { id: 1, title: 'It is first Title', text: 'There is a plase for txt of this post', vievCount: 12 },
-        { id: 2, title: 'It is second Title', text: 'There is a plase for txt of this post', vievCount: 72 },
-        { id: 3, title: 'It is therd Title', text: 'There is a plase for txt of this post', vievCount: 75 },
-        { id: 4, title: 'It is forth Title', text: 'There is a plase for txt of this post', vievCount: 14 },
-        { id: 5, title: 'It is fiveth Title', text: 'There is a plase for txt of this post', vievCount: 1 }
-    ],
-    inputedTitle: '',
-    inputedText: '',
+    
     profile: null,
     status: ""
 };

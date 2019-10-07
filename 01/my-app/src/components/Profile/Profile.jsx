@@ -3,33 +3,11 @@ import styles from './Profile.module.css';
 import Preloader from '../Preloader/Preloader';
 import {Redirect} from 'react-router-dom'
 import ProfileStatus from "./ProfileStatus"
-
+import PostsContainer from "../Posts/PostsContainer"
 
 
 
 let Profile = (props)=>{
-    let mapedPosts = props.myPosts.map(p => <div className={styles.publishedPosts} key={p.id}>
-
-            <div className={styles.publishedPosts_item}>
-                    <div className={styles.publishedPosts_title}>{p.title}</div>
-                    <div className={styles.publishedPosts_text}>{p.text}</div>
-                    <div className={styles.publishedPosts_vievCount}>{p.vievCount}</div>
-            </div>
-
-        </div>
-        );
-
-    let sendToContainerTitle = (element)=>{
-        props.titleOnchanged(element.target.value)
-    }
-   
-    let sendToContainerText = (element)=>{
-        props.textOnchanged(element.target.value)
-    }
-
-    let postSender = ()=>{
-        props.publishPost();
-    }
     if(!props.profile){
         return <Preloader/>
     };
@@ -49,12 +27,7 @@ let Profile = (props)=>{
 
             </div>
         </div>
-        <div className={styles.publishingPosts}>
-            <input type="text" placeholder='Title' value={props.inputedTitle} onChange={sendToContainerTitle}/>
-            <textarea placeholder='Text'  value={props.inputedText} onChange={sendToContainerText}></textarea>
-            <button onClick={postSender}>Add new post</button>
-        </div>
-        {mapedPosts}
+        <PostsContainer/>
     </div>
     
 }

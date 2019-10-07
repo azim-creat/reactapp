@@ -1,8 +1,13 @@
 import React from 'react';
 import styles from './Posts.module.css';
+import {Field, reduxForm} from "redux-form";
+
+
+
+
 
 const  Posts = (props) =>{
-    debugger;
+
     let mapedPostsfromState = props.postItems.map (p =>
         <div className={styles.Posts_items_item}>
             <div className={styles.Posts_item_title}>{p.title}</div>
@@ -10,37 +15,45 @@ const  Posts = (props) =>{
         </div>
         );
 
-    let sendToContainerPublishPost = () =>{
-        props.publishPost();
-    };
-
-    let sendToContainerTitle = (element) =>{
-        let onchangeTitleText = element.target.value;
-        props.onchangeTitle(onchangeTitleText);
-    };
-
-    let sendToContainerText = (element) =>{
-        let onchangePostText = element.target.value;
-        props.onchangePostText(onchangePostText);
-    };
-
+   
+    // let addNewPost = (values)=>{
+    //     props.addPostTitle(values.newPostTitle)
+    //     props.addPostText(values.newPostText)
+    // }
+    let addNewPost = (values)=>{
+        let postData ={title:values.newPostTitle, postText:values.newPostText}
+        props.addPostTitle(postData)
+       // props.addPostText(values.newPostText)
+    }
 
     return (
             <div className={styles.Posts}>
                 <div className={styles.Posts_items}>                  
                     {mapedPostsfromState}
                 </div>
-
-                <div className={styles.Posts_adding}
-                    >
-                    <input type="text" placeholder='Title' value={props.currentTitleText} onChange={sendToContainerTitle}/>
-                    <textarea placeholder='Text'  value={props.currentPostText} onChange={sendToContainerText}></textarea>
-                    <button onClick={sendToContainerPublishPost}>Add new post</button>
-                </div>
+                <AddMessageFormRedux onSubmit={addNewPost}/>
             </div>
+            
     );
 
 
 }
+
+
+const AddNewPostForm =(props)=>{
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component={'textarea'} placeholder='Title' name='newPostTitle'/>
+                <Field component={'textarea'} placeholder='Text' name='newPostText'/>
+            </div>
+            <div>
+                <button>SEND</button>
+            </div>
+        </form>
+    )
+}
+
+const AddMessageFormRedux =  reduxForm({form: 'profile-add-post-form'})(AddNewPostForm)
 
 export default Posts;

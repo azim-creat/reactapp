@@ -1,27 +1,10 @@
-const POST_POST = 'POST_POST';
-const ADD_NEW_TITLE_TEXT = 'ADD_NEW_TITLE_TEXT';
-const ADD_NEW_POST_TEXT = 'ADD_NEW_POST_TEXT';
-
-
-export const postPostActionCreator =() =>{
-    return {
-        type: POST_POST
+const ADD_POST = 'ADD_POST'
+export const addPostAC = (newPost)=>{
+    return{
+        type: ADD_POST,
+        newPost
     }
-};
-
-export const addNewTitleTextActionCreator =(onchangeTitleText)=>{
-    return {
-        type: ADD_NEW_TITLE_TEXT,
-        newTitleText: onchangeTitleText
-    }
-};
-export const addNewPostTextActionCreator =(onchangePostText)=>{
-    return {
-        type: ADD_NEW_POST_TEXT,
-        newPostText: onchangePostText
-    }
-};
-
+}
 let initialithation = {
     postItems : [
         {id:1 , title: 'Title 1' , postText: 'Lorem upsumLorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, rem reprehenderit explicabo cupiditate molestiae, porro exercitationem eveniet adipisci veniam dolorem praesentium dignissimos quibusdam voluptatem a necessitatibus minus vitae dicta facilis?'},
@@ -30,33 +13,18 @@ let initialithation = {
 
         {id:3 , title: 'Title 3' , postText: 'Lorem upsumLorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, rem reprehenderit explicabo cupiditate molestiae, porro exercitationem eveniet adipisci veniam dolorem praesentium dignissimos quibusdam voluptatem a necessitatibus minus vitae dicta facilis?'}
     ],
-
-    title: '',
-    textPost: ''
 };
 
 
 const postReducer =(state = initialithation, action) =>{
     switch(action.type){
-        case ADD_NEW_TITLE_TEXT:
+        case ADD_POST :
+            let newPost = action.newPost;
             return{
                 ...state,
-                title: action.newTitleText,
+                postItems:[ ...state.postItems, {id:22, title:newPost.title, postText:newPost.postText}]
             }
-        case ADD_NEW_POST_TEXT:
-            return {
-                ...state,
-                textPost : action.newPostText
-            };
-        case POST_POST:
-            let title = state.title;
-            let postText = state.textPost
-            return {
-                ...state,
-                title : '',
-                textPost : '',
-                postItems: [...state.postItems , {id:5, title: title , postText: postText}]
-            };
+        
         default :
         return state;
     }
