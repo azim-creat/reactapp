@@ -1,32 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
+import { compose } from "redux";
 import './App.css';
-import HeaderContainer from './components/Header/HeaderContainer';
-import Sidebar from './components/Sidebar/Sidebar';
-import Main from './components/Main/Main.jsx';
-import { Route } from 'react-router-dom';
 import SuperDialogscContainer from './components/Dialogs/DialogsContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
+import Main from './components/Main/Main.jsx';
 import PostsContainer from './components/Posts/PostsContainer';
 import ProfessorsContainer from './components/Professors/ProfessorsContainer';
-import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import Login from './components/Login/Login';
+import Sidebar from './components/Sidebar/Sidebar';
+import UsersContainer from './components/Users/UsersContainer';
+import { initializeApp } from './redux/appReducer';
+import Preloader from './components/Preloader/Preloader'
 
-const App = () => {
-    return (
-        <div className='main__grid'>
-            <HeaderContainer />
-            <Sidebar />
-            
-            <div className='app_main_content'>
-                <Route path='/main' component={Main} />
-                <Route path='/dialogs' render={() => <SuperDialogscContainer />}/>
-                <Route path='/login' render={() => <Login />}/>
-                <Route path='/posts' render={() => <PostsContainer />}/>
-                <Route path='/professors' render={() => <ProfessorsContainer />}/>
-                <Route path='/users' render={() => <UsersContainer />}/>
-                <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
-            </div>
-        </div>
-    );
-}
-export default App;
+class App extends Component {
+
+    componentDidMount() {
+        this.props.initializeApp()
+    }
+
+    render() {
+        if (!this.props.initialized) {
+            return <Preloader />
+        } else {
+            return (
+                <div className='main__grid'>
+                    <HeaderContainer />
+                    <Sidebar />
+
+                    <div className='app_main_content'>
+                        <Route path='/main' component={Main} />
+                        <Route path='/dialogs' render={() => <SuperDialogscContainer />} />
+                        <Route path='/login' render={() => <Login />} />
+                        <Route path='/posts' render={() => <PostsContainer />} />
+                        <Route path='/professors' render={() => <ProfessorsContainer />} />
+                        <Route path='/users' render={() => <UsersContainer />} />
+                        <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+                    </div>
+                </div>
+            );
+        }
+        }
+    }
+
+    const mapStateToProps = (state) => {
+        return{
+        initialized: state.app.initialized,
+        }
+    }
+
+    export default compose(
+        withRouter,
+        connect(mapStateToProps, { initializeApp })) (App);
+
