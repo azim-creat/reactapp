@@ -11,3 +11,13 @@
     cursor: pointer;
 }
 
+.header__logOut{
+    background-color: lightblue;
+    border: 0;
+    width: 100px;
+    height: 25px;
+    border-radius: 3px;
+}
+.header__logOut:hover{
+    background-color: palevioletred;
+}
