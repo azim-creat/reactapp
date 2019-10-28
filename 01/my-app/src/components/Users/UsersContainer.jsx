@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getUser,follow,unfollow,setCurrentPage,toggleProgressOfFollowing } from '../../redux/usersReducer'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import {compose} from "redux";
-import {getUsersSelector,
+import {getUsersReSelector,
         getPageSizeSelector,
         getTotalUsersCountSelector, 
         getCurrentPageSelector,
@@ -43,7 +43,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: getUsersSelector(state),
+        users: getUsersReSelector(state),
         pageSize: getPageSizeSelector(state),
         totalUsersCount: getTotalUsersCountSelector(state),
         currentPage: getCurrentPageSelector(state),
