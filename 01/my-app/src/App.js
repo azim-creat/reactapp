@@ -27,8 +27,6 @@ class App extends Component {
             return <Preloader />
         } else {
             return (
-                <BrowserRouter>
-                    <Provider store={store}>
                         <div className='main__grid'>
                             <HeaderContainer />
                             <Sidebar />
@@ -43,8 +41,7 @@ class App extends Component {
                                 <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
                             </div>
                         </div>
-                    </Provider>
-                </BrowserRouter>
+                    
             );
         }
     }
