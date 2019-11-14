@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import './App.css';
 import SuperDialogscContainer from './components/Dialogs/DialogsContainer';
@@ -14,6 +14,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import UsersContainer from './components/Users/UsersContainer';
 import { initializeApp } from './redux/appReducer';
 import Preloader from './components/Preloader/Preloader'
+import store from "./redux/reduxStore";
 
 class App extends Component {
 
@@ -26,32 +27,36 @@ class App extends Component {
             return <Preloader />
         } else {
             return (
-                <div className='main__grid'>
-                    <HeaderContainer />
-                    <Sidebar />
+                <BrowserRouter>
+                    <Provider store={store}>
+                        <div className='main__grid'>
+                            <HeaderContainer />
+                            <Sidebar />
 
-                    <div className='app_main_content'>
-                        <Route path='/main' component={Main} />
-                        <Route path='/dialogs' render={() => <SuperDialogscContainer />} />
-                        <Route path='/login' render={() => <Login />} />
-                        <Route path='/posts' render={() => <PostsContainer />} />
-                        <Route path='/professors' render={() => <ProfessorsContainer />} />
-                        <Route path='/users' render={() => <UsersContainer />} />
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-                    </div>
-                </div>
+                            <div className='app_main_content'>
+                                <Route path='/main' component={Main} />
+                                <Route path='/dialogs' render={() => <SuperDialogscContainer />} />
+                                <Route path='/login' render={() => <Login />} />
+                                <Route path='/posts' render={() => <PostsContainer />} />
+                                <Route path='/professors' render={() => <ProfessorsContainer />} />
+                                <Route path='/users' render={() => <UsersContainer />} />
+                                <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+                            </div>
+                        </div>
+                    </Provider>
+                </BrowserRouter>
             );
         }
-        }
     }
+}
 
-    const mapStateToProps = (state) => {
-        return{
+const mapStateToProps = (state) => {
+    return {
         initialized: state.app.initialized,
-        }
     }
+}
 
-    export default compose(
-        withRouter,
-        connect(mapStateToProps, { initializeApp })) (App);
+export default compose(
+    withRouter,
+    connect(mapStateToProps, { initializeApp }))(App);
 
