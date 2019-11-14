@@ -8,9 +8,11 @@ const maxLength10 = maxLengthCreator(10);
 
 
 
-const  Posts = (props) =>{
+const  Posts = React.memo((props) =>{
 
-    let mapedPostsfromState = props.postItems.map (p =>
+    let mapedPostsfromState = 
+    [...props.postItems].reverse()
+        .map (p =>
         <div className={styles.Posts_items_item}>
             <div className={styles.Posts_item_title}>{p.title}</div>
             <div>{p.postText} </div>
@@ -34,7 +36,7 @@ const  Posts = (props) =>{
     );
 
 
-}
+})
 
 
 const AddNewPostForm =(props)=>{
