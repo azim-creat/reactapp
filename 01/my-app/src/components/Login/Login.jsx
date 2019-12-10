@@ -1,31 +1,22 @@
 import React from 'react';
-import {Field, reduxForm} from "redux-form";
-import {Input} from "../../common/FormsControl";
-import {required} from "../../utilits/validators";
-import {connect} from "react-redux";
-import {login} from "../../redux/authReducer";
-import {Redirect} from "react-router-dom";
-import {s} from './FormsControl.module.css'
+import { Field, reduxForm } from "redux-form";
+import { Input } from "../../common/FormsControl";
+import { required } from "../../utilits/validators";
+import { connect } from "react-redux";
+import { login } from "../../redux/authReducer";
+import { Redirect } from "react-router-dom";
+import { s } from './FormsControl.module.css'
+import { createField } from '../../common/FormsControl'
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-            <Field placeholder={"Email"} name={"email"}
-                       validate={[required]}
-                       component={Input}/>
-            </div>
-            <div>
-            <Field placeholder={"Password"} name={"password"} type={"password"}
-                       validate={[required]}
-                       component={Input}/>
-            </div>
-            <div>
-                <Field component={Input} name={"rememberMe"} type={"checkbox"}/> remember me
-                
-            </div>
-            {props.error && <div className={s.formSummaryError}>
-                {props.error}
+        <form onSubmit={handleSubmit}>
+            {createField("Email", "email", [required], Input)}
+            {createField("Password", "password", [required], Input, "password")}
+            {createField(null, "rememberMe", null, Input, "checkbox", "remember me")}
+
+            {error && <div className={s.formSummaryError}>
+                {error}
             </div>
             }
             <div>
@@ -35,7 +26,7 @@ const LoginForm = (props) => {
     )
 }
 
-const LoginReduxForm =  reduxForm({form: 'login'})(LoginForm)
+const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) => {
@@ -55,4 +46,4 @@ const mapStateToProps = (state) => ({
     isAuth: state.authModul.isAuth
 })
 
-export default connect(mapStateToProps, {login} )(Login);
+export default connect(mapStateToProps, { login })(Login);
