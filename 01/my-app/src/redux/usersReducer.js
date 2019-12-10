@@ -1,4 +1,5 @@
 import { usersAPI, followAPI } from '../api/api'
+import {updateObjectInArray} from '../utilits/object-helper'
 
 let initialState = {
     users: [],
@@ -28,70 +29,63 @@ export const setTotlaUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_
 export const toggleIsFitching = (isFitching) => ({ type: TOGGLE_IS_FITCHING, isFitching })
 export const toggleProgressOfFollowing = (isFitching, userId) => ({ type: TOGGLE_PROGRESS_OF_FOLLOWING, isFitching, userId })
 
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(toggleProgressOfFollowing(true, userId));
+    let response = await apiMethod(userId);
+    if (response.data.resultCode === 0) {
+        dispatch(actionCreator(userId))
+    }
+    dispatch(toggleProgressOfFollowing(false, userId))
+}
 
 export const getUser = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFitching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(response => {
-            dispatch(toggleIsFitching(false));
-            dispatch(setUsers(response.data.items));
-            dispatch(setTotlaUsersCount(response.data.totalCount));
-        });
+
+        let response = await usersAPI.getUsers(currentPage, pageSize);
+        dispatch(toggleIsFitching(false));
+        dispatch(setUsers(response.data.items));
+        dispatch(setTotlaUsersCount(response.data.totalCount));
     }
 }
 
 export const follow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleProgressOfFollowing(true, userId))
-        followAPI.follow(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(toggleProgressOfFollowing(false, userId))
-            });
+    return async (dispatch) => {
+        followUnfollowFlow(dispatch, userId, followAPI.follow.bind(userId), followSuccess);
     }
 }
+
 export const unfollow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleProgressOfFollowing(true, userId))
-        followAPI.unfollow(userId)
-            .then(response => {
-
-                if (response.data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId))
-                }
-                dispatch(toggleProgressOfFollowing(false, userId))
-            });
+    return async (dispatch) => {
+        followUnfollowFlow(dispatch, userId, followAPI.unfollow.bind(userId), unfollowSuccess);
     }
 }
-
-
-
-
-
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return { ...u, followed: true }
-                    }
-                    return u;
-                })
+                
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
+                // users: state.users.map(u => {
+                //     if (u.id === action.userId) {
+                //         return { ...u, followed: true }
+                //     }
+                //     return u;
+                // })
             }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return { ...u, followed: false }
-                    }
-                    return u;
-                })
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
+                
+                // users: state.users.map(u => {
+                //     if (u.id === action.userId) {
+                //         return { ...u, followed: false }
+                //     }
+                //     return u;
+                // })
             }
         case SET_USERS: {
             return { ...state, users: action.users }
