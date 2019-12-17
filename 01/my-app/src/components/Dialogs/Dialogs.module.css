@@ -17,9 +17,9 @@
 
 .Dialogs_its_dialog{
     border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-
+    color:#fff;
+    background-color: #2a343d;
+    box-shadow: 0px 0px 10px rgba(54, 135, 167, 0.411);
     grid-area: isdialog;
     padding: 10px;  
     overflow-y: scroll;
@@ -28,14 +28,15 @@
 .Dialogs_message_item{
     padding: 15px;
     margin: 10px;
-    background-color: bisque;
+    background-color: rgb(21, 21, 37);
     border-radius: 10px;
 }
 
 .Dialogs_contacts{
     border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    color:#fff;
+  background-color: #2a343d;
+  box-shadow: 0px 0px 10px rgba(54, 135, 167, 0.411);
 
     grid-area: iscontact
 }

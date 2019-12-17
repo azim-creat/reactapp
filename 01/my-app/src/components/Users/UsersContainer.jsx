@@ -2,30 +2,39 @@ import React from 'react'
 import Users from './Users'
 import Preloader from '../Preloader/Preloader'
 import { connect } from 'react-redux'
-import { getUser,follow,unfollow,setCurrentPage,toggleProgressOfFollowing } from '../../redux/usersReducer'
+import {
+    getUser,
+    follow,
+    unfollow,
+    setCurrentPage,
+    toggleProgressOfFollowing
+} from '../../redux/usersReducer'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
-import {compose} from "redux";
-import {getUsersReSelector,
-        getPageSizeSelector,
-        getTotalUsersCountSelector, 
-        getCurrentPageSelector,
-        getIsFitchingSelector,
-        getFollowingInProgressSelector} from '../../redux/usersSelectors'
+import { compose } from "redux";
+
+import {
+    getUsersReSelector,
+    getPageSizeSelector,
+    getTotalUsersCountSelector,
+    getCurrentPageSelector,
+    getIsFitchingSelector,
+    getFollowingInProgressSelector
+} from '../../redux/usersSelectors'
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.getUser(this.props.currentPage, this.props.pageSize)
+        const { currentPage, pageSize } = this.props;
+        this.props.getUser(currentPage, pageSize);
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.getUser(pageNumber, this.props.pageSize)
-        this.props.setCurrentPage(pageNumber);
+        const { pageSize } = this.props;
+        this.props.getUser(pageNumber, pageSize);
     }
 
     render() {
         return <>
             {this.props.isFitching ? <Preloader /> : undefined}
-
             <Users totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
@@ -54,5 +63,5 @@ let mapStateToProps = (state) => {
 
 export default compose(
     withAuthRedirect,
-    connect(mapStateToProps,{follow, unfollow, setCurrentPage, toggleProgressOfFollowing, getUser })
+    connect(mapStateToProps, { follow, unfollow, setCurrentPage, toggleProgressOfFollowing, getUser })
 )(UsersContainer)

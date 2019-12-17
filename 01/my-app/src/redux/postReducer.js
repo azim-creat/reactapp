@@ -27,7 +27,7 @@ const postReducer =(state = initialithation, action) =>{
                 postItems:[ ...state.postItems, {id:22, title:newPost.title, postText:newPost.postText}]
             }
         case DELETE_POST:
-            return {...state, postItems: state.postItems.filter(p => p.id != action.postId)
+            return {...state, postItems: state.postItems.filter(p => p.id !== action.postId)
         }
         
         default :
