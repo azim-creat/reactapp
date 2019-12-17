@@ -25,18 +25,3 @@
 .Students_Button{
   width: 100%;
 }
-.pagesLine {
-  overflow-x: scroll;
-  overflow-y: hidden;
-}
-.pagesLine span{
- margin: 5px;
- cursor: pointer;
-}
-
-
-.selectedPage{
-  font-size: 15px;
-  font-weight: bold;
-  padding: 10px;
-}

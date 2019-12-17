@@ -1,0 +1,36 @@
+/* .pagesLine {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .pagesLine span{
+    color: #fff;
+   margin: 5px;
+   cursor: pointer;
+  }
+  
+  
+  .selectedPage{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(58, 137, 211) !important;
+    padding: 10px;
+  } */
+
+
+span{
+  color: #fff;
+}
+.paginator {
+  margin: 10px;
+}
+.pageNumber {
+  color: #fff;
+
+  padding: 2px;
+  border: 1px solid grey;
+}
+
+.pageNumber.selectedPage {
+  font-weight: bold;
+  border-color: black;
+}

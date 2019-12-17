@@ -1,10 +1,14 @@
 .sidebar{
     margin: 10px;
+   
 }
 .sidebar_items{
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+
+    color:#fff;
+    background-color: #2a343d;
+    box-shadow: 0px 0px 15px rgba(140, 212, 241, 0.212);
+        border-radius: 5px;
+   
 }
 .Sidebar_icon{
     padding: 10px;
@@ -20,12 +24,11 @@
 
 a{
     text-decoration: none;
-    color:black;
+    color: #fff;
   }
 
 .activeLink{
     color: rgb(26, 29, 29);
     background-color: #B2EBF2;
     background-size: cover;
-    
 }
