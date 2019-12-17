@@ -1,5 +1,5 @@
-import { usersAPI, followAPI } from '../api/api'
-import {updateObjectInArray} from '../utilits/object-helper'
+import { usersAPI, followAPI }  from '../api/api'
+import {updateObjectInArray}    from '../utilits/object-helper'
 
 let initialState = {
     users: [],
@@ -10,24 +10,21 @@ let initialState = {
     followingInProgress: []
 };
 
+const FOLLOW                        = 'FOLLOW';
+const UNFOLLOW                      = 'UNFOLLOW';
+const SET_USERS                     = 'SET_USERS';
+const SET_CURRENT_PAGE              = 'SET_CURENT_PAGE';
+const SET_TOTAL_USERS_COUNT         = 'SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FITCHING            = 'TOGGLE_IS_FITCHING';
+const TOGGLE_PROGRESS_OF_FOLLOWING  = 'TOGGLE_PROGRESS_OF_FOLLOWING';
 
-
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS';
-const SET_CURRENT_PAGE = 'SET_CURENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FITCHING = 'TOGGLE_IS_FITCHING';
-const TOGGLE_PROGRESS_OF_FOLLOWING = 'TOGGLE_PROGRESS_OF_FOLLOWING';
-
-
-export const followSuccess = (userId) => ({ type: FOLLOW, userId })
-export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId })
-export const setUsers = (users) => ({ type: SET_USERS, users })
-export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
-export const setTotlaUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
-export const toggleIsFitching = (isFitching) => ({ type: TOGGLE_IS_FITCHING, isFitching })
-export const toggleProgressOfFollowing = (isFitching, userId) => ({ type: TOGGLE_PROGRESS_OF_FOLLOWING, isFitching, userId })
+export const followSuccess              = (userId)              => ({ type: FOLLOW, userId })
+export const unfollowSuccess            = (userId)              => ({ type: UNFOLLOW, userId })
+export const setUsers                   = (users)               => ({ type: SET_USERS, users })
+export const setCurrentPage             = (currentPage)         => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setTotlaUsersCount         = (totalUsersCount)     => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
+export const toggleIsFitching           = (isFitching)          => ({ type: TOGGLE_IS_FITCHING, isFitching })
+export const toggleProgressOfFollowing  = (isFitching, userId)  => ({ type: TOGGLE_PROGRESS_OF_FOLLOWING, isFitching, userId })
 
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleProgressOfFollowing(true, userId));
@@ -66,26 +63,12 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
-                // users: state.users.map(u => {
-                //     if (u.id === action.userId) {
-                //         return { ...u, followed: true }
-                //     }
-                //     return u;
-                // })
             }
         case UNFOLLOW:
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
-                
-                // users: state.users.map(u => {
-                //     if (u.id === action.userId) {
-                //         return { ...u, followed: false }
-                //     }
-                //     return u;
-                // })
             }
         case SET_USERS: {
             return { ...state, users: action.users }
@@ -111,5 +94,4 @@ const usersReducer = (state = initialState, action) => {
             return state;
     }
 }
-
 export default usersReducer;
